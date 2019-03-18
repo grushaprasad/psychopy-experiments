@@ -8,7 +8,7 @@
 import librosa, random, subprocess, sys, glob, re, csv
 import numpy as np
 
-soundfile_path = './stim/'
+soundfile_path = './target_stims/'
 stim_files = ['a_dg08_CV.wav', 'a_dg09_CV.wav', 'a_dg10_CV.wav', 'a_dg11_CV.wav', 'a_dg12_CV.wav']
 
 offset = 0.098 
@@ -120,7 +120,7 @@ all_stims = [0]*len(all_precursors)
 for i, item in enumerate(all_precursors):
     curr_stim = np.concatenate((item[0], dg_stims[i][0]))
     fname = 'dg%s_%s_%s.wav'%(re.findall('\d+', dg_stims[i][1])[0], i+1, item[1])
-    fpath = './stims/%s'%fname
+    fpath = './combined_stims/%s'%fname
     librosa.output.write_wav(fpath, curr_stim, sr=sr)
     all_stims[i] = (fpath, dg_stims[i][1], item[1])
 
@@ -137,7 +137,7 @@ with open("exp1_block2_stimlist.csv",'wb') as resultFile:
 with open("exp1_block1_stimlist.csv",'wb') as resultFile:
     resultFile.write('stim_fname\n')
     for item in stim_files*num_trials_per_cond:
-        resultFile.write('./stim/%s\n'%item)
+        resultFile.write('./target_stims/%s\n'%item)
 
 
 

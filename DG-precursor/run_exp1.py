@@ -6,17 +6,18 @@ print(sound.Sound)
 
 import glob, random, re, numpy, subprocess, sys
 
-part_id = '.test01'
+part_id = 'grusha_test01'
 
-dataFilename = './data/DGcontext_Exp1_%s.csv'%part_id
+dataFilename = './data/DGcontext_Exp1%s.csv'%part_id
 stimFile_block1 = 'exp1_block1_stimlist.csv'
 stimFile_block2 = 'exp1_block2_stimlist.csv'
 
 
 
 dataFile = open(dataFilename,'a')
-dataFile.write(','.join(['part_id','target_fname','cond','trial_id','response','\n']))
+dataFile.write(','.join(['part_id','target_fname','cond', 'trial_id','response','\n']))
 dataFile.close()
+
 
 ## EXPERIMENT CODE
 
@@ -64,9 +65,9 @@ def runTrial(trial, trial_id, block=1):
     response = waitResp()
 
     # save response to file
-    dataFile = open(dataFilename,'a');
+    dataFile = open(dataFilename,'a')
     if block == 1:
-        trial_info = [part_id, stim, trial_id, response]
+        trial_info = [part_id, stim, 'block1', trial_id, response]
     else:
         trial_info = [part_id, fname, cond, trial_id, response]
 
@@ -79,7 +80,7 @@ def runPracticeTrial():
     myWin.flip()
     core.wait(1.00)
     
-    playSound('./stim/a_dg18_CV.wav')
+    playSound('./target_stims/a_dg18_CV.wav')
     response = waitResp()   # Not recording the practice data. Do I need to?
     
     message.setText(trial_instructions)
@@ -87,7 +88,7 @@ def runPracticeTrial():
     myWin.flip()
     core.wait(1.00)
     
-    playSound('./stim/a_dg05_CV.wav')
+    playSound('./target_stims/a_dg05_CV.wav')
     response = waitResp()
     
     
@@ -107,7 +108,7 @@ else:
     message = visual.TextStim(myWin, text="", pos=(0,5), height=0.7, color='black', wrapWidth=25, alignVert='top')
 
 
-trial_instructions = "Press the key with the green sticker if you hear 'da' and green sticker if you hear 'ga'"
+trial_instructions = "If you hear a \"d\" at the beginning of the syllable, press the yellow key. If you hear a \"d\" at the beginning of the syllable, press the blue key. "
 
 message.setText("Welcome! There are two parts to this experiment. In the first part, you will hear a\
 syllable and decide what consonant it begins with. If you hear a \"d\" at the beginning of the syllable, \
