@@ -111,7 +111,7 @@ else:
 
 trial_instructions = "If you hear a \"d\" at the beginning of the syllable, press the yellow key. If you hear a \"d\" at the beginning of the syllable, press the blue key. "
 
-message.setText("Welcome! There are two parts to this experiment. In the first part, you will hear a\
+message.setText("Welcome! There are two parts to this experiment. In the first part, you will hear a \
 syllable and decide what consonant it begins with. If you hear a \"d\" at the beginning of the syllable, \
 press the yellow key (on the left). If you hear a \"g\", press the blue key (on the right).\n\n\
 The second part of the experiment works exactly the same way, except that you will hear a short sequence \
