@@ -9,7 +9,7 @@ import librosa, random, subprocess, sys, glob, re, csv
 import numpy as np
 
 soundfile_path = './target_stims/'
-stim_files = ['a_dg08_CV.wav', 'a_dg09_CV.wav', 'a_dg10_CV.wav', 'a_dg11_CV.wav', 'a_dg12_CV.wav']
+stim_files = ['a_dg09_CV.wav', 'a_dg10_CV.wav', 'a_dg11_CV.wav', 'a_dg12_CV.wav', 'a_dg13_CV.wav','a_dg14_CV.wav','a_dg15_CV.wav','a_dg16_CV.wav']
 
 offset = 0.098 
 duration = 0.365
@@ -126,7 +126,7 @@ for i, item in enumerate(all_precursors):
 
 all_stims.insert(0, ['stim_fname', 'target_fname', 'condition'])
 
-with open("exp1_block2_stimlist.csv",'wb') as resultFile:
+with open("exp1_block2_stimlist.csv",'w') as resultFile:
     wr = csv.writer(resultFile)
     wr.writerows(all_stims)
 
@@ -134,10 +134,14 @@ with open("exp1_block2_stimlist.csv",'wb') as resultFile:
 # Create stim list for block1 
 
 
-with open("exp1_block1_stimlist.csv",'wb') as resultFile:
+with open("exp1_block1_stimlist.csv",'w') as resultFile:
     resultFile.write('stim_fname\n')
-    for item in stim_files*num_trials_per_cond:
+    for i,item in enumerate(stim_files*num_trials_per_cond):
         resultFile.write('./target_stims/%s\n'%item)
+        # if i == len(stim_files*num_trials_per_cond)-1: 
+        # 	resultFile.write('./target_stims/%s'%item)
+        # else:
+        # 	resultFile.write('./target_stims/%s\n'%item)
 
 
 

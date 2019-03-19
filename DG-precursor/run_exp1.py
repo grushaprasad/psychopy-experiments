@@ -14,7 +14,7 @@ stimFile_block2 = 'exp1_block2_stimlist.csv'
 
 
 
-dataFile = open(dataFilename,'a')
+dataFile = open(dataFilename,'w')
 dataFile.write(','.join(['part_id','target_fname','cond', 'trial_id','response','\n']))
 dataFile.close()
 
@@ -24,6 +24,7 @@ dataFile.close()
 def playSound(soundFile):  
     #soundx = sound.backend_pygame.SoundPygame(soundFile)
     #soundx = sound.SoundPygame(soundFile)
+    print(soundFile)
     soundx = sound.Sound(soundFile)
     dur = soundx.getDuration()
     soundx.setVolume(1.0)
@@ -95,7 +96,7 @@ def runPracticeTrial():
 
 # # # # # # # #
 #initialize display
-computer = ('Mac', 'PC', 'soundbooth')[0]
+computer = ('Mac', 'PC', 'soundbooth')[2]
 if computer=='Mac':
     #myWin = visual.Window(size=(1024,768), pos=(0,0), fullscr=False, allowGUI=True, monitor='testMonitor', units='cm', color='whitesmoke', useRetina=True)
     myWin = visual.Window(size=(1400,768), fullscr=False, allowGUI=True, monitor='testMonitor', units='cm', color='whitesmoke')
@@ -104,7 +105,7 @@ elif computer=='PC':
     myWin = visual.Window(size=(1024,768), pos=(0,0), fullscr=False, allowGUI=True, monitor='testMonitor', units='cm', color='whitesmoke')
     message = visual.TextStim(myWin, text="", pos=(0,6), height=0.8, color='black', wrapWidth=30, alignVert='top')
 else:
-    myWin = visual.Window(size=(1400,768), fullscr=False, allowGUI=True, monitor='testMonitor', units='cm', color='whitesmoke')
+    myWin = visual.Window(size=(1400,768), fullscr=True, allowGUI=True, monitor='testMonitor', units='cm', color='whitesmoke')
     message = visual.TextStim(myWin, text="", pos=(0,5), height=0.7, color='black', wrapWidth=25, alignVert='top')
 
 
@@ -141,7 +142,7 @@ for i,trial in enumerate(trials_block1):
 message.setText("You are done with the first part of the experiment!\n\n\
 As a reminder, in the second part you will hear a sequence of tones before \
 the syllable, but your task is still the same. Press the yellow key if you hear \
-\"d\" and the green key if you hear \"ga\".")
+\"d\" and the green key if you hear \"g\".")
 message.draw()
 myWin.flip()
 waitPress()
